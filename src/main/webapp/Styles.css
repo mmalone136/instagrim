@@ -12,5 +12,17 @@ and open the template in the editor.
 nav {
     text-align: left;
     border: 2px;
+    padding-right:100px;
     float: right;
+    color: black;
+}
+#html{
+    
+    height:100%;
+    
+}
+
+
+#page{
+   background: -webkit-linear-gradient(top, background, white);    
 }

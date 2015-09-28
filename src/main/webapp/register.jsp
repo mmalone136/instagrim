@@ -7,12 +7,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+    <head style="height:100%">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Instagrim</title>
         <link rel="stylesheet" type="text/css" href="Styles.css" />
     </head>
-    <body>
+    <body id="page">
         <header>
         <h1>InstaGrim ! </h1>
         <h2>Your world in Black and White</h2>
