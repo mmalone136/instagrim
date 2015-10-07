@@ -10,12 +10,33 @@ and open the template in the editor.
 
 
 nav {
-    text-align: left;
-    border: 2px;
-    padding-right:100px;
-    float: right;
-    color: black;
+    text-align: center;
+    border: 10px;
+    //padding-right:100px;
+    width: 100%;
+    padding-top: 10px;
+    background-image:url('stuff/Navbar.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    left:0;
+    top:0;
+    //vertical-align: middle;
+    //float: right;
+    //color: black;
+    display: inline;
+    height: 60px;
+    float: left;
+    //background-color: black;
 }
+    
+    a:hover{
+        //width: 60px;
+    //background-color: grey;
+    
+    opacity:0.7;
+}
+
 #html{
     
     height:100%;
@@ -24,5 +45,55 @@ nav {
 
 
 #page{
-   background: -webkit-linear-gradient(top, background, white);    
+   //background: -webkit-linear-gradient(top, background, white);   
+   background-repeat: no-repeat;
+   background-image: url('stuff/9551.jpg');
+   background-attachment: fixed;
+   color:white;
+   margin-top: 75px;
+   //background-image:url(stuff/545.jpg);
+   
+   //To have static image:
+   //background-size: cover;
+   //background-attachment: fixed;
+}
+
+ul {
+    
+    
+    height: 100px;
+    display: inline;
+    
+    vertical-align: middle;
+    
+    list-style: none;
+    width: 200px;
+    margin: 1;
+    padding: 100px;
+    //overflow: hidden;
+}
+
+li {
+    display: inline;
+    //padding-right:100px;
+    //padding-left:100px;
+    
+    
+    float: left;
+    
+}
+
+
+a{
+   display: block;
+    //width: 120px;
+    font-weight: bold;
+    color: green;
+   // background-color: #98bf21;
+    //text-align: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    text-decoration: none;
+    vertical-align: middle;
+    //text-transform: uppercase;
 }

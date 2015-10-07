@@ -10,20 +10,33 @@
 <!DOCTYPE html>
 <html style="height:100%">
     <head>
-        <title>Instagrim</title>
-        <link rel="stylesheet" type="text/css" href="Styles.css"  />
+      <link rel="stylesheet" type="text/css" href="Styles.css"  />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+           <nav> 
+        
+        <!--<h1 style="text-align:center; width:100%; color:white">IG!</h1>-->
+    <ul>
+        <li><a href="index.jsp">
+                <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="45" height="45">
+            </a></li> <br> 
+            <li><a href="index.jsp">Home</a></li>
+             <li><a href="test.jsp">Things</a></li>
+            </ul>
+        
+           </nav>
     </head>
-    <body id="page">
-        <header>
+    <body id="page" >
+        
+        <!--<header>
             <h1 style="color:white"> InstaGrim ! </h1> 
             <h2>Your world in Black and White</h2>
-        </header>
-        <nav>
-            <ul>
-
-               
-                <li><a href="upload.jsp">Upload</a></li>
+        </header>-->
+        <!--<nav>-->
+        
+        <p >
+            <br><br>  <br><br>       
+                <a href="../java/uk/ac/dundee/computing/aec/instagrim/stores/LoggedIn.java"></a>
+    <li><a href="upload.jsp">Upload</a></li>
                     <%
                         
                         LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
@@ -33,7 +46,14 @@
                     %>
 
                 <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
-                    <%}
+                <li><a href="index.jsp">LogOut</a></li>
+                    <%} 
+                            
+                    if(lg!=null)
+                    {
+                        lg.setLogedout();
+                        lg = null;
+                    }
                             }else{
                                 %>
                  <li><a href="register.jsp">Register</a></li>
@@ -42,13 +62,15 @@
                                         
                             
                     }%>
-            </ul>
-        </nav>
+            </p>
+        <!--</nav>-->
+            <!--
         <footer>
             <ul>
                 <li class="footer"><a href="/Instagrim">Home</a></li>
                 <li>&COPY; Andy C</li>
             </ul>
         </footer>
+            -->
     </body>
 </html>

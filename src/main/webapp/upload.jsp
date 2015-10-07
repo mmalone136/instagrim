@@ -7,16 +7,18 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html style="height:100%">
-    <head>
+    <head >
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Instagrim</title>
+        <!--<title>Instagrim</title> -->
         <link rel="stylesheet" type="text/css" href="Styles.css" />
     </head>
-    <body id="page">
-        <h1>InstaGrim ! </h1>
-        <h2>Your world in Black and White</h2>
+    <body id="page" style="color:white">
+        <!--<h1>InstaGrim ! </h1> 
+        <h2>Your world in Black and White</h2> -->
         <nav>
-            <ul>
+            <ul>        <li><a href="index.jsp">
+                <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="45" height="45">
+            </a></li> <br> 
                 <li class="nav"><a href="upload.jsp">Upload</a></li>
                 <li class="nav"><a href="/Instagrim/Images/majed">Sample Images</a></li>
             </ul>
