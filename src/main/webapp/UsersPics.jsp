@@ -50,7 +50,7 @@
         %>
         
             <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="/Instagrim/Image/<%=p.getSUUID()%>" >
-            <img border="0" height="265px" width="205px" src="/Instagrim/Thumb/<%=p.getSUUID()%>" ></a>         
+            <img border="0" height="275px" width="225px" src="/Instagrim/Thumb/<%=p.getSUUID()%>" ></a>         
             <%}}%>
     
         </div>

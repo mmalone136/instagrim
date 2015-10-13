@@ -108,6 +108,29 @@ div
     //float:left;
     
 }
+
+#button{
+    
+    background-image:url('stuff/button.png'); 
+    height:200px;
+                           
+    width:200px; 
+    
+    //-moz-border-radius: 10px; 
+    //box-shadow: 0px 0px 20px #888; 
+    
+    border-radius: 10px; 
+    color:white; 
+    background-position: center; 
+    text-align:center;
+                            
+    vertical-align: middle; 
+    margin-right:100px;
+                            
+    font-size:20px;
+    
+}
+
 a{
    display: inline-block;
     //width: 120px;

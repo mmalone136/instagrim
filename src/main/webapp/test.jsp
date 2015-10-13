@@ -36,7 +36,7 @@
         <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" ><img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
           
         <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" ><img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
-        <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" > <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
+        <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" > <img border="0" alt="WE_CAN_DANCE" src="stuff/The_Safety_Dance_single.jpg" width="250" height="200"></a>
         <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" ><img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
             
         <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" ><img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>

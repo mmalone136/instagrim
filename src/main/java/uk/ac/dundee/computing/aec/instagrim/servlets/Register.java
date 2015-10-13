@@ -47,10 +47,17 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
+        String first_name=request.getParameter("first_name");
+        String last_name=request.getParameter("last_name");
+        String email=request.getParameter("email");
         
         User us=new User();
         us.setCluster(cluster);
-        us.RegisterUser(username, password);
+        us.RegisterUser(username, password, first_name, last_name, email);
+        
+        //for email
+        //http://www.javaprogrammingforums.com/java-theory-questions/5089-how-can-i-convert-string-set-string-possible.html
+        
         
 	response.sendRedirect("/Instagrim");
         

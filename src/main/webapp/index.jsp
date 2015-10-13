@@ -21,16 +21,23 @@
             </a></li> <br> 
             <li><a href="index.jsp">Home</a></li>
              <li><a href="test.jsp">Things</a></li>
+             <li><a href="upload.jsp">Upload</a></li>
+                <form style="float:right; margin-right:50px">
+                    Search  
+                <input type="search" name="Searchthings">
+                <input type="submit">
+                </form>
+             
             </ul>
         
            </nav>
     </head>
     <body id="page" >
-                
+
         <p >
             <br><br>  <br><br>       
                 <a href="../java/uk/ac/dundee/computing/aec/instagrim/stores/LoggedIn.java"></a>
-    <li><a href="upload.jsp">Upload</a></li>
+    <!--<li><a href="upload.jsp">Upload</a></li>-->
                     <%
                         
                         LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
@@ -47,10 +54,6 @@
  
                 <input type="submit" value="Logout"> 
             </form>
-
-                
-                
-                
                 
                     <%} 
                             
@@ -61,8 +64,12 @@
                     //}
                             }else{
                                 %>
-                 <li><a href="register.jsp">Register</a></li>
-                <li><a href="login.jsp">Login</a></li>
+                 
+                <ul style="margin-left:200px">
+                    <a id='button' href="register.jsp"><br><br><br><br>Register</a>
+                    <a id='button' href="login.jsp"><br><br><br><br>Login</a>
+                </ul>
+                
                 <%
                                         
                             
