@@ -14,7 +14,7 @@
         <title>Instagrim</title>
         <link rel="stylesheet" type="text/css" href="/Instagrim/Styles.css" />
     </head>
-    <body id="page" >
+    <body id="page">
         <!--<header>
         
         <h1>InstaGrim ! </h1>
@@ -33,7 +33,9 @@
  
         <article>
             <h1>Your Pics</h1>
+            <div >
         <%
+            int count = 0;
             java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
             if (lsPics == null) {
         %>
@@ -42,20 +44,26 @@
         } else {
             Iterator<Pic> iterator;
             iterator = lsPics.iterator();
-            while (iterator.hasNext()) {
+           while (iterator.hasNext()) {
                 Pic p = (Pic) iterator.next();
-
+  
         %>
-        <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/><%
+        
+            <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="/Instagrim/Image/<%=p.getSUUID()%>" >
+            <img border="0" height="265px" width="205px" src="/Instagrim/Thumb/<%=p.getSUUID()%>" ></a>         
+            <%}}%>
+    
+        </div>
 
-            }
-            }
-        %>
+     </div> 
+        
+          <br><br><br>
         </article>
-        <footer>
-            <ul>
-                <li class="footer"><a href="/Instagrim">Home</a></li>
-            </ul>
+        
+            <footer>            
+                <li class="footer"><a style="padding:50px; text-align:center; color:white"  href="/Instagrim">Home</a></li>
+                <br><br><br>
         </footer>
+        
     </body>
 </html>

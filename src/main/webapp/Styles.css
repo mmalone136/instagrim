@@ -49,6 +49,7 @@ nav {
    background-repeat: no-repeat;
    background-image: url('stuff/9551.jpg');
    background-attachment: fixed;
+   background-size:100% auto;
    color:white;
    margin-top: 75px;
    //background-image:url(stuff/545.jpg);
@@ -83,9 +84,32 @@ li {
     
 }
 
-
+div
+{
+    
+    //background-color: red;
+    //width: 250px;
+    //position: relative;
+    //display: inline-block;    
+    position:relative;
+    float: left; 
+    display: inline-block; 
+    //width: 350px;  
+    left: 50px; 
+    //height: 400px ;
+    //margin-bottom: 50px; 
+    //margin-left: 20px
+    //padding:200px;    
+    //padding-left:50px;
+    
+    
+    //margin-top: 40px; 
+    //margin-left: 70px;
+    //float:left;
+    
+}
 a{
-   display: block;
+   display: inline-block;
     //width: 120px;
     font-weight: bold;
     color: green;
@@ -95,5 +119,7 @@ a{
     padding-left: 20px;
     text-decoration: none;
     vertical-align: middle;
+
+    
     //text-transform: uppercase;
 }

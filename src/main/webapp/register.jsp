@@ -19,20 +19,32 @@
         </header>
         <nav>
             <ul>
-                
-                <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
+
+        <li><a href="index.jsp">
+                <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="45" height="45">
+            </a></li> <br> 
+            
+            <li><a href="index.jsp">Home</a></li>
+             <li><a href="test.jsp">Things</a></li>
+             <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
             </ul>
-        </nav>
+        
+           </nav>
+                
+
        
         <article>
             <h3>Register as user</h3>
             <form method="POST"  action="Register">
                 <ul>
-                    <li>User Name <input type="text" name="username"></li>
-                    <li>Password <input type="password" name="password"></li>
+                    <li>User Name    <input style="margin-left:50px"type="text" name="username"></li><br><br>
+                    <li>Password     <input style="margin-left:61px"type="password" name="password"></li><br><br>
+                    <li>First Name   <input style="margin-left:50px"type="text" name="first_name"></li><br><br>
+                    <li>Surname      <input style="margin-left:65px"type="text" name="last_name"></li><br><br>
+                    <li>EMail        <input style="margin-left:82px"type="text" name="email"></li><br><br>
                 </ul>
                 <br/>
-                <input type="submit" value="Regidter"> 
+                <input type="submit" value="Register"> 
             </form>
 
         </article>

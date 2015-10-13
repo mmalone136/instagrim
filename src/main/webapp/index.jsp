@@ -26,13 +26,7 @@
            </nav>
     </head>
     <body id="page" >
-        
-        <!--<header>
-            <h1 style="color:white"> InstaGrim ! </h1> 
-            <h2>Your world in Black and White</h2>
-        </header>-->
-        <!--<nav>-->
-        
+                
         <p >
             <br><br>  <br><br>       
                 <a href="../java/uk/ac/dundee/computing/aec/instagrim/stores/LoggedIn.java"></a>
@@ -46,14 +40,25 @@
                     %>
 
                 <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
-                <li><a href="index.jsp">LogOut</a></li>
+                <!--<li><a href="index.jsp">LogOut</a></li>
+                <input type="submit" value="LogOut">-->
+                
+            <form action="LogOut" method="POST">
+ 
+                <input type="submit" value="Logout"> 
+            </form>
+
+                
+                
+                
+                
                     <%} 
                             
-                    if(lg!=null)
-                    {
-                        lg.setLogedout();
-                        lg = null;
-                    }
+                    //if(lg!=null)
+                    //{
+                    //    lg.setLogedout();
+                    //    lg = null;
+                    //}
                             }else{
                                 %>
                  <li><a href="register.jsp">Register</a></li>
@@ -63,14 +68,5 @@
                             
                     }%>
             </p>
-        <!--</nav>-->
-            <!--
-        <footer>
-            <ul>
-                <li class="footer"><a href="/Instagrim">Home</a></li>
-                <li>&COPY; Andy C</li>
-            </ul>
-        </footer>
-            -->
     </body>
 </html>
