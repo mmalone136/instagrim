@@ -21,6 +21,11 @@
                 <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="45" height="45">
             </a></li> <br> 
                 <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
+                <form action = "SearchResults.jsp" style="float:right; margin-right:50px">
+                    Search  
+                <input type="search" name="SearchResults">
+                <input type="submit">
+                </form>
             </ul>
         </nav>
        

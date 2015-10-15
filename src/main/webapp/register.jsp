@@ -27,6 +27,11 @@
             <li><a href="index.jsp">Home</a></li>
              <li><a href="test.jsp">Things</a></li>
              <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
+             <form action = "SearchResults.jsp" style="float:right; margin-right:50px">
+                    Search  
+                <input type="search" name="SearchResults">
+                <input type="submit">
+                </form>
             </ul>
         
            </nav>
@@ -41,7 +46,7 @@
                     <li>Password     <input style="margin-left:61px"type="password" name="password"></li><br><br>
                     <li>First Name   <input style="margin-left:50px"type="text" name="first_name"></li><br><br>
                     <li>Surname      <input style="margin-left:65px"type="text" name="last_name"></li><br><br>
-                    <li>EMail        <input style="margin-left:82px"type="text" name="email"></li><br><br>
+                    <li>Email        <input style="margin-left:82px"type="email" name="email"></li><br><br>
                 </ul>
                 <br/>
                 <input type="submit" value="Register"> 

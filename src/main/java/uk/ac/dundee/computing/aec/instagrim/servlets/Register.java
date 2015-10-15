@@ -19,6 +19,11 @@ import javax.servlet.http.HttpServletResponse;
 import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
 import uk.ac.dundee.computing.aec.instagrim.models.User;
 
+import java.util.HashSet;
+import java.util.Set;
+ import java.util.ArrayList; 
+import java.util.Arrays;
+
 /**
  *
  * @author Administrator
@@ -50,14 +55,14 @@ public class Register extends HttpServlet {
         String first_name=request.getParameter("first_name");
         String last_name=request.getParameter("last_name");
         String email=request.getParameter("email");
-        
+             
         User us=new User();
         us.setCluster(cluster);
-        us.RegisterUser(username, password, first_name, last_name, email);
         
-        //for email
-        //http://www.javaprogrammingforums.com/java-theory-questions/5089-how-can-i-convert-string-set-string-possible.html
+               
+        Set<String> x = new HashSet<String>(Arrays.asList(email)); 
         
+        us.RegisterUser(username, password, first_name, last_name, x);
         
 	response.sendRedirect("/Instagrim");
         

@@ -22,9 +22,9 @@
             <li><a href="index.jsp">Home</a></li>
              <li><a href="test.jsp">Things</a></li>
              <li><a href="upload.jsp">Upload</a></li>
-                <form style="float:right; margin-right:50px">
+                <form action = "SearchResults.jsp" style="float:right; margin-right:50px">
                     Search  
-                <input type="search" name="Searchthings">
+                <input type="search" name="SearchResults">
                 <input type="submit">
                 </form>
              
@@ -57,11 +57,7 @@
                 
                     <%} 
                             
-                    //if(lg!=null)
-                    //{
-                    //    lg.setLogedout();
-                    //    lg = null;
-                    //}
+                     
                             }else{
                                 %>
                  
@@ -71,9 +67,9 @@
                 </ul>
                 
                 <%
-                                        
-                            
-                    }%>
+                        }
+
+                    %>
             </p>
     </body>
 </html>

@@ -28,14 +28,27 @@
             </a></li> <br> 
                 <li class="nav"><a href="/Instagrim/upload.jsp">Upload</a></li>
                 <li class="nav"><a href="/Instagrim/Images/majed">Sample Images</a></li>
+                <form action = "SearchResults.jsp" style="float:right; margin-right:50px">
+                    Search  
+                <input type="search" name="SearchResults">
+                <input type="submit">
+                </form>
             </ul>
         </nav>
  
         <article>
-            <h1>Your Pics</h1>
+            <%
+                     LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
+                     if (lg != null) {
+                     String UserName = lg.getUsername();
+                      //if (lg.getlogedin()) {
+                    
+            %>
+            <h1><%=UserName%>'s Pictures</h1>
+            
             <div >
         <%
-            int count = 0;
+                     }
             java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
             if (lsPics == null) {
         %>

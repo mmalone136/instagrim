@@ -21,6 +21,11 @@
             </a></li> <br> 
                 <li class="nav"><a href="upload.jsp">Upload</a></li>
                 <li class="nav"><a href="/Instagrim/Images/majed">Sample Images</a></li>
+                <form action = "SearchResults.jsp" style="float:right; margin-right:50px">
+                    Search  
+                <input type="search" name="SearchResults">
+                <input type="submit">
+                </form>
             </ul>
         </nav>
  
