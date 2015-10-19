@@ -46,8 +46,6 @@ public class Image extends HttpServlet {
     private Cluster cluster;
     private HashMap CommandsMap = new HashMap();
     
-    
-
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -99,6 +97,7 @@ public class Image extends HttpServlet {
         PicModel tm = new PicModel();
         tm.setCluster(cluster);
         java.util.LinkedList<Pic> lsPics = tm.getPicsForUser(User);
+
         RequestDispatcher rd = request.getRequestDispatcher("/UsersPics.jsp");
         request.setAttribute("Pics", lsPics);
         rd.forward(request, response);

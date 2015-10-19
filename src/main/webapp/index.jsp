@@ -47,9 +47,13 @@
                     %>
 
                 <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
-                <!--<li><a href="index.jsp">LogOut</a></li>
-                <input type="submit" value="LogOut">-->
                 
+                <li><a href="/Instagrim/profile/<%=lg.getUsername()%>">Your Profile</a></li>
+                
+                <form action="Profile" method="Get">
+ 
+                <input type="submit" value="profile"> 
+            </form>
             <form action="LogOut" method="POST">
  
                 <input type="submit" value="Logout"> 
@@ -72,4 +76,12 @@
                     %>
             </p>
     </body>
+    
+    <Form>
+        
+        
+    </Form>
+    
+    
+    
 </html>

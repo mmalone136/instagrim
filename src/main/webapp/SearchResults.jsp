@@ -36,10 +36,12 @@
         <br><br>
         <h2>String: <%=x%></h2>  
             
-            <form action="profile.jsp">
-            <li>User Name    <input style="margin-left:50px"type="text" name="username"></li><br><br>
+        
+            <form action="Things" method="GET">
+                <form action="UserProfile.jsp">
+            <!--<li>User Name    <input style="margin-left:50px"type="text" name="username"></li><br><br>-->
             
              <input type="submit" value="username">
-            </form>
+    </form>
     </body>
 </html>

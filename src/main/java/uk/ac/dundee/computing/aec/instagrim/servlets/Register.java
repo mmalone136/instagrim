@@ -59,7 +59,6 @@ public class Register extends HttpServlet {
         User us=new User();
         us.setCluster(cluster);
         
-               
         Set<String> x = new HashSet<String>(Arrays.asList(email)); 
         
         us.RegisterUser(username, password, first_name, last_name, x);

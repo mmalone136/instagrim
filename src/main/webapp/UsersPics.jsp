@@ -15,12 +15,7 @@
         <link rel="stylesheet" type="text/css" href="/Instagrim/Styles.css" />
     </head>
     <body id="page">
-        <!--<header>
-        
-        <h1>InstaGrim ! </h1>
-        <h2>Your world in Black and White</h2>
-        </header>
-        -->
+
         <nav>
             <ul>
             <li><a href="../index.jsp">

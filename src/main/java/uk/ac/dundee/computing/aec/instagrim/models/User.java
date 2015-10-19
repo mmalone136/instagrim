@@ -14,6 +14,7 @@ import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import uk.ac.dundee.computing.aec.instagrim.lib.AeSimpleSHA1;
 import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
 
@@ -34,9 +35,7 @@ public class User {
     }
     
     public boolean RegisterUser(String username, String Password, String first_name,String last_name,Set<String> email){
-        AeSimpleSHA1 sha1handler=  new AeSimpleSHA1();
-        
-          
+        AeSimpleSHA1 sha1handler=  new AeSimpleSHA1();            
         
         String EncodedPassword=null;
         try {
@@ -90,6 +89,54 @@ public class User {
     
     return false;  
     }
+    
+    
+        public String getDataForUser(String Username) {
+        //public String [] getDataForUser(String Username) {
+        //ArrayList<String> userData = new ArrayList<String>();
+        Session session = cluster.connect("instagrim");
+        PreparedStatement ps = session.prepare("select * FROM userprofiles WHERE login =?");
+        ResultSet rs = null;
+        BoundStatement boundStatement = new BoundStatement(ps);
+        rs = session.execute( // this is where the query is executed
+                boundStatement.bind( // here you are binding the 'boundStatement'
+                        Username));
+        
+        
+        if (rs.isExhausted()) {
+            System.out.println("No Datas returned");
+            return null;
+        } else {
+            for (Row row : rs) {
+                //Pic pic = new Pic();
+                String x;
+                //StoredData[3] = row.getString("first_name");
+                //java.util.UUID UUID = row.getUUID("picid");
+                x = row.getString("first_name");
+                          
+                //userData.add(x);
+                return x;
+            }
+        }
+        //String [] data = userData.toArray(new String[userData.size()]);
+               
+        //return data;
+        return "FAILED";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
        public void setCluster(Cluster cluster) {
         this.cluster = cluster;
     }
