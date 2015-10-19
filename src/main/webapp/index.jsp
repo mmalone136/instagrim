@@ -50,10 +50,6 @@
                 
                 <li><a href="/Instagrim/profile/<%=lg.getUsername()%>">Your Profile</a></li>
                 
-                <form action="Profile" method="Get">
- 
-                <input type="submit" value="profile"> 
-            </form>
             <form action="LogOut" method="POST">
  
                 <input type="submit" value="Logout"> 
