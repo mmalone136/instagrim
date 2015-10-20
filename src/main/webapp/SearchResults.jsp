@@ -4,6 +4,7 @@
     Author     : Matt
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uk.ac.dundee.computing.aec.instagrim.stores.*" %>
 <!DOCTYPE html>
@@ -39,25 +40,30 @@
               <% 
                 String found = (String) request.getAttribute("found");
                 String username = (String) request.getAttribute("username");
+                ArrayList<String[]> list = (ArrayList<String[]>) request.getAttribute("list");
               %>
               <br><br>
               <% if(found=="YES"){  
-                String first = (String) request.getAttribute("first_name");
-                String last = (String) request.getAttribute("last_name");                
+                for(int i=0;i<list.size();i++){
+                    String [] temp = list.get(i);
+                    
+                    username = temp[0];
+                    String first = temp[1];
+                    String last = temp[2];
+                //String first = (String) request.getAttribute("first_name");
+                //String last = (String) request.getAttribute("last_name");                
                   
               %>  
+                <br><br>
                 First Name :   <%=first%> <br>
                 Surname    :   <%=last%> <br>
                 Username   :   <%=username%> <br>
-                <form method="GET" action="profile/<%=username%>">
-                    <input type="hidden" name="username" value="<%=username%>">
                 
-                   <li><a href="/Instagrim/profile/<%=username%>">User's Profile</a></li> 
+                   <li><a  href="/Instagrim/profile/<%=username%>">User's Profile</a></li> 
                     
-                    <input type="submit">
-                </form>
               <br><br>
-              <% }else{
+              <% }
+              }else{
                   
                 %> 
                 <p>No Results were found for "<%=username%>"</p>
