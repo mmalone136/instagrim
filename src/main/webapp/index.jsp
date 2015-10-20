@@ -22,12 +22,12 @@
             <li><a href="index.jsp">Home</a></li>
              <li><a href="test.jsp">Things</a></li>
              <li><a href="upload.jsp">Upload</a></li>
-                <form action = "SearchResults.jsp" style="float:right; margin-right:50px">
-                    Search  
-                <input type="search" name="SearchResults">
-                <input type="submit">
-                </form>
              
+             <form id="search" method="GET" action="search" >
+                    <input type="text" name="target" />
+                    <input type='submit' />
+                </form>
+                         
             </ul>
         
            </nav>
@@ -48,7 +48,7 @@
 
                 <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
                 
-                <li><a href="/Instagrim/profile/<%=lg.getUsername()%>">Your Profile</a></li>
+                <li><a href="/Instagrim/profile/<%=lg.getUsername()%>">Your Profile</a></li>               
                 
             <form action="LogOut" method="POST">
  
@@ -71,13 +71,6 @@
 
                     %>
             </p>
-    </body>
-    
-    <Form>
-        
-        
-    </Form>
-    
-    
+    </body>   
     
 </html>

@@ -146,3 +146,8 @@ a{
     
     //text-transform: uppercase;
 }
+
+#search{
+    float:right;
+    margin-right: 50px;
+}

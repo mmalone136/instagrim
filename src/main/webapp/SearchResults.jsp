@@ -9,22 +9,20 @@
 <!DOCTYPE html>
 <html style="height:100%">
     <head>
-      <link rel="stylesheet" type="text/css" href="Styles.css"  />
+      <link rel="stylesheet" type="text/css" href="/Instagrim/Styles.css"  />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
            <nav> 
-        
-        <!--<h1 style="text-align:center; width:100%; color:white">IG!</h1>-->
+
     <ul>
         <li><a href="index.jsp">
-                <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="45" height="45">
+                <img border="0" alt="LOGOTHINGS" src="/Instagrim/stuff/logo2.png" width="45" height="45">
             </a></li> <br> 
             <li><a href="index.jsp">Home</a></li>
              <li><a href="test.jsp">Things</a></li>
              <li><a href="upload.jsp">Upload</a></li>
-                <form action = "SearchResults.jsp" style="float:right; margin-right:50px">
-                    Search  
-                <input type="search" name="SearchResults">
-                <input type="submit">
+                <form id="search" method="GET" action="search" >
+                    <input type="text" name="target" />
+                    <input type='submit' />
                 </form>
              
             </ul>
@@ -32,16 +30,42 @@
     </head>
     <body id="page">
         <h1>SEARCH RESULTS</h1>
-        <% String x = request.getParameter("SearchResults");%>
-        <br><br>
-        <h2>String: <%=x%></h2>  
-            
-        
-            <form action="Things" method="GET">
-                <form action="UserProfile.jsp">
-            <!--<li>User Name    <input style="margin-left:50px"type="text" name="username"></li><br><br>-->
-            
-             <input type="submit" value="username">
-    </form>
+ 
+                            
+        <article>
+  </article>
+              Put the results of the datas of things here
+    
+              <% 
+                String found = (String) request.getAttribute("found");
+                String username = (String) request.getAttribute("username");
+              %>
+              <br><br>
+              <% if(found=="YES"){  
+                String first = (String) request.getAttribute("first_name");
+                String last = (String) request.getAttribute("last_name");                
+                  
+              %>  
+                First Name :   <%=first%> <br>
+                Surname    :   <%=last%> <br>
+                Username   :   <%=username%> <br>
+                <form method="GET" action="profile/<%=username%>">
+                    <input type="hidden" name="username" value="<%=username%>">
+                
+                   <li><a href="/Instagrim/profile/<%=username%>">User's Profile</a></li> 
+                    
+                    <input type="submit">
+                </form>
+              <br><br>
+              <% }else{
+                  
+                %> 
+                <p>No Results were found for "<%=username%>"</p>
+                
+                <%  }   %>             
+    </body>
+                
+                
+                
     </body>
 </html>

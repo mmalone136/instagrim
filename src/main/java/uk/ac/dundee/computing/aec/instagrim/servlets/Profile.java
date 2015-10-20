@@ -87,12 +87,14 @@ public class Profile extends HttpServlet{
      
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
-        String Username = "adminstuff";
+        out.println("=nearly get things");
+        String Username= request.getParameter("username");
         Set<String> email = null; 
         String first_name = ""; 
         String last_name ="";
-            
-            
+        
+        out.println("getting things | " + Username);
+        
         Session session = cluster.connect("instagrim");
         PreparedStatement ps = session.prepare("select first_name,last_name,email FROM userprofiles WHERE login =?");
         ResultSet rs = null;
@@ -119,8 +121,9 @@ public class Profile extends HttpServlet{
                 request.setAttribute("first_name",first_name);
                 request.setAttribute("last_name",last_name);
                 request.setAttribute("email",x);
+                
                }
-        
+        request.setAttribute("username",Username);
     RequestDispatcher rd = request.getRequestDispatcher("/UserProfile.jsp");   
     rd.forward(request, response);
 

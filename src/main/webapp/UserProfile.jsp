@@ -40,21 +40,24 @@
                  <article>
             <%
                 
-                     LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
-                     if (lg != null) {
-                     String UserName = lg.getUsername();
-                     if (lg.getlogedin()) {
+                     //LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
+                     //if (lg != null) {
+                     //String UserName = lg.getUsername();
+                     //if (lg.getlogedin()) {
                     
             %>
-            <h1><%=UserName%>'s Profile</h1>
-              <%}}%>   </article>
+            <h1><%//=UserName%> Profile</h1>
+              <%//}}%>   </article>
               Put the datas of things here
     
               <% 
                 String first = (String) request.getAttribute("first_name");
                 String last = (String) request.getAttribute("last_name");
                 String email = (String) request.getAttribute("email");
+                String Username = (String) request.getAttribute("username");
               %>
+              <br><br>
+              <%=Username%>
               <br><br>
               <%=first%> 
               <br><br>
@@ -63,7 +66,8 @@
               <%=email%>
               
               <br><br>
+
+                <li><a href="/Instagrim/Images/<%=Username%>">User's Images</a></li>
               
-              <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">User's Images</a></li>
     </body>
 </html>
