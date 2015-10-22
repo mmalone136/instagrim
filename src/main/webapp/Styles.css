@@ -147,6 +147,23 @@ a{
     //text-transform: uppercase;
 }
 
+#seven{
+    display: inline-block;
+    //width: 120px;
+    font-weight: bold;
+    color: green;
+   // background-color: #98bf21;
+    //text-align: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    text-decoration: none;
+    vertical-align: middle;
+
+margin-top: 40px; margin-left: 70px; padding-right:50px; float:left;
+
+}
+
+
 #search{
     float:right;
     margin-right: 50px;

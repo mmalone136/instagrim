@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -75,17 +76,28 @@ public class Image extends HttpServlet {
             command = (Integer) CommandsMap.get(args[1]);
         } catch (Exception et) {
             error("Bad Operator", response);
-            return;
+            return;          
         }
+        
+        out.println("  --------------  " + command);
+        
+        for(int seven= 0;seven< 3;seven++)
+      {
+        
+        out.println("  |||||||||||||||||||||||  " + args[seven]);
+        }
+        
+        
+        
         switch (command) {
             case 1:
-                DisplayImage(Convertors.DISPLAY_PROCESSED,args[2], response);
+                DisplayImage(Convertors.DISPLAY_PROCESSED, args[2], response);
                 break;
             case 2:
                 DisplayImageList(args[2], request, response);
                 break;
             case 3:
-                DisplayImage(Convertors.DISPLAY_THUMB,args[2],  response);
+                DisplayImage(Convertors.DISPLAY_THUMB,args[2], response);
                 break;
             default:
                 error("Bad Operator", response);
@@ -97,18 +109,28 @@ public class Image extends HttpServlet {
         PicModel tm = new PicModel();
         tm.setCluster(cluster);
         java.util.LinkedList<Pic> lsPics = tm.getPicsForUser(User);
-
+        
+        
+        String url = request.getRequestURL().toString();
+        String curr = url.substring(39);
+        request.setAttribute("curr", curr);
+        
+        
+        out.println("--------------------------------------------name" + curr);
+        
+        
+        
         RequestDispatcher rd = request.getRequestDispatcher("/UsersPics.jsp");
         request.setAttribute("Pics", lsPics);
         rd.forward(request, response);
 
     }
 
-    private void DisplayImage(int type,String Image, HttpServletResponse response) throws ServletException, IOException {
+    private void DisplayImage(int type,String Image,HttpServletResponse response) throws ServletException, IOException {
         PicModel tm = new PicModel();
         tm.setCluster(cluster);
   
-        
+        System.out.println("HERE SHITEBAG BALLS");
         Pic p = tm.getPic(type,java.util.UUID.fromString(Image));
         
         OutputStream out = response.getOutputStream();
@@ -116,6 +138,7 @@ public class Image extends HttpServlet {
         response.setContentType(p.getType());
         response.setContentLength(p.getLength());
         //out.write(Image);
+        
         InputStream is = new ByteArrayInputStream(p.getBytes());
         BufferedInputStream input = new BufferedInputStream(is);
         byte[] buffer = new byte[8192];

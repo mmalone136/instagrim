@@ -18,60 +18,83 @@
 
         <nav>
             <ul>
-            <li><a href="../index.jsp">
-                <img border="0" alt="LOGOTHINGS" src="../stuff/logo2.png" width="45" height="45">
-            </a></li> <br> 
+                <li><a href="../index.jsp">
+                        <img border="0" alt="LOGOTHINGS" src="../stuff/logo2.png" width="45" height="45">
+                    </a></li> <br> 
                 <li class="nav"><a href="/Instagrim/upload.jsp">Upload</a></li>
                 <li class="nav"><a href="/Instagrim/Images/majed">Sample Images</a></li>
-                <form action = "SearchResults.jsp" style="float:right; margin-right:50px">
-                    Search  
-                <input type="search" name="SearchResults">
-                <input type="submit">
+                <form id="search" method="GET" action="../search" >
+                    <input type="text" name="target" />
+                    <input type='submit' />
                 </form>
             </ul>
         </nav>
- 
+
         <article>
             <%
-                     LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
-                     if (lg != null) {
-                     String UserName = lg.getUsername();
+                
+                String curr = (String) request.getAttribute("curr");
+                
+                String url = request.getRequestURL().toString();
+                
+                
+                LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
+                if (lg != null) {
+                    String UserName = lg.getUsername();
                       //if (lg.getlogedin()) {
-                    
+                 
             %>
-            <h1><%=UserName%>'s Pictures</h1>
-            
-            <div >
-        <%
-                     }
-            java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
-            if (lsPics == null) {
-        %>
-        <p>No Pictures found</p>
-        <%
-        } else {
-            Iterator<Pic> iterator;
-            iterator = lsPics.iterator();
-           while (iterator.hasNext()) {
-                Pic p = (Pic) iterator.next();
-  
-        %>
-        
-            <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="/Instagrim/Image/<%=p.getSUUID()%>" >
-            <img border="0" height="275px" width="225px" src="/Instagrim/Thumb/<%=p.getSUUID()%>" ></a>         
-            <%}}%>
-    
-        </div>
+            <h1><%=curr%>              's Pictures</h1>
+                       
+                <%
+                    }
+                    java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
+                    if (lsPics == null) {
+                %>
+                <p>No Pictures found</p>
+                <%
+                } else {
+                    Iterator<Pic> iterator;
+                    iterator = lsPics.iterator();
+                    while (iterator.hasNext()) {
+                        Pic p = (Pic) iterator.next();
+                        
+                %>
 
-     </div> 
-        
-          <br><br><br>
-        </article>
-        
-            <footer>            
-                <li class="footer"><a style="padding:50px; text-align:center; color:white"  href="/Instagrim">Home</a></li>
-                <br><br><br>
-        </footer>
-        
-    </body>
+                <form method="POST" action="../picture/<%=p.getSUUID()%>" >
+                    <input type="hidden" value="<%=p.getSUUID()%>" name="pic">
+                    
+                    <input id="seven" type='image' name="submit" src="/Instagrim/Thumb/<%=p.getSUUID()%>" border="0" height="275px" width="225px"/>
+<!--
+                    <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="/Instagrim/Image/<%//=p.getSUUID()%>" >
+                        <img border="0" height="275px" width="225px" src="/Instagrim/Thumb/<%//=p.getSUUID()%>" ></a>  
+-->
+                </form>
+<!--
+                <form id='formName' name='formName'>
+                    <div class="style7">
+                        <input type='text' id='userInput' name='userInput' value=''>
+                        <input type="image" name="submit" src="/Button1.jpg" border="0" alt="Submit" />
+                    </div>
+                </form>        
+         -->       
+                
+                
+                
+                <%}
+                }%>
+
+            
+
+        </div> 
+
+        <br><br><br>
+    </article>
+
+    <footer style="margin-top:1000px">            
+        <li class="footer"><a style="padding:50px; text-align:center; color:white"  href="/Instagrim">Home</a></li>
+        <br><br><br>
+    </footer>
+
+</body>
 </html>

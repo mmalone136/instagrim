@@ -9,7 +9,16 @@
             120
         </session-timeout>
     </session-config>
-    
+    <!--
+    <servlet>
+        <description></description>
+        <servlet-name>Picture</servlet-name>
+        <servlet-class>coreservlets.toPic</servlet-class>
+      </servlet>
+      <servlet-mapping>
+        <servlet-name>Picture</servlet-name>
+        <url-pattern>/picture</url-pattern> 
+      </servlet-mapping>-->
     <error-page>
         <error-code>
             404

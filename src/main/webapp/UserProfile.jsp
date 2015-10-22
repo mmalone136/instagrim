@@ -22,11 +22,10 @@
             <li><a href="../index.jsp">Home</a></li>
              <li><a href="../test.jsp">Things</a></li>
              <li><a href="../upload.jsp">Upload</a></li>
-                <form action = "SearchResults.jsp" style="float:right; margin-right:50px">
-                    Search  
-                <input type="search" name="SearchResults">
-                <input type="submit">
-                </form>
+                <form id="search" method="GET" action="../search" >
+                <input type="text" name="target" />
+                <input type='submit' />
+            </form>
              
             </ul>
         </nav>

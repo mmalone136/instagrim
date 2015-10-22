@@ -17,18 +17,18 @@
 
         <nav>
             <ul>
-                        <li><a href="index.jsp">
-                <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="45" height="45">
-            </a></li> <br> 
+                <li><a href="index.jsp">
+                        <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="45" height="45">
+                    </a></li> <br> 
                 <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
-                <form action = "SearchResults.jsp" style="float:right; margin-right:50px">
-                    Search  
-                <input type="search" name="SearchResults">
-                <input type="submit">
+                <form id="search" method="GET" action="search" >
+                    <input type="text" name="target" />
+                    <input type='submit' />
                 </form>
+
             </ul>
         </nav>
-       
+
         <article>
             <h3>Login</h3>
             <form method="POST"  action="Login">

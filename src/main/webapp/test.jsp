@@ -24,29 +24,7 @@
     <li> <a href="index.jsp">Or Here</a></li>
     
     <br><br><br><br>
-     
-    <!--  <div  position="relative" style="float: left; display: inline-block; width: 350px;  left: 50px; height: 400px ;margin-bottom: 50px; margin-left: 20px">
-     <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" ><img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="200" height="200"></a>
-    -->
-    
-    <!--
-    <div >
-        <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" ><img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
-        <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" > <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
-        <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" ><img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
-          
-        <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" ><img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
-        <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" > <img border="0" alt="WE_CAN_DANCE" src="stuff/The_Safety_Dance_single.jpg" width="250" height="200"></a>
-        <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" ><img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
-            
-        <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" ><img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
-        <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" > <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
-        <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg" ><img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="250" height="200"></a>
-    
-    
-    </div>
-    -->
-    
+       
     <!--
     
     
