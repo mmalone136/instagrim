@@ -61,7 +61,7 @@
                         
                 %>
 
-                <form method="POST" action="../picture/<%=p.getSUUID()%>" >
+                <form method="GET" action="../picture/<%=p.getSUUID()%>" >
                     <input type="hidden" value="<%=p.getSUUID()%>" name="pic">
                     
                     <input id="seven" type='image' name="submit" src="/Instagrim/Thumb/<%=p.getSUUID()%>" border="0" height="275px" width="225px"/>

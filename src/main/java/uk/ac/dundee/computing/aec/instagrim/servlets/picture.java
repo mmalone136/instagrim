@@ -5,10 +5,20 @@
  */
 package uk.ac.dundee.computing.aec.instagrim.servlets;
 
+import com.datastax.driver.core.BoundStatement;
 import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.PreparedStatement;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
+import com.datastax.driver.core.Session;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.UUID;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -23,16 +33,16 @@ import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
  *
  * @author Matt
  */
-@WebServlet(name = "picture", urlPatterns = {"/picture","/picture/*"})
+@WebServlet(name = "picture", urlPatterns = {"/picture", "/picture/*"})
 public class picture extends HttpServlet {
-private Cluster cluster;
-    
-        public void init(ServletConfig config) throws ServletException {
+
+    private Cluster cluster;
+
+    public void init(ServletConfig config) throws ServletException {
         // TODO Auto-generated method stub
         cluster = CassandraHosts.getCluster();
     }
-    
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -44,19 +54,10 @@ private Cluster cluster;
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+       // response.setContentType("text/html;charset=UTF-8");
+        //try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet picture</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet picture at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -71,7 +72,67 @@ private Cluster cluster;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+               //processRequest(request, response);
+
+        String picid = (String) request.getParameter("pic");
+        Session session = cluster.connect("instagrim");
+        UUID THINGS = UUID.fromString(picid);
+        PreparedStatement ps = session.prepare("select comment,userleft,timeleft FROM comments WHERE picid =? ALLOW FILTERING");
+        ResultSet rs = null;
+        BoundStatement boundStatement = new BoundStatement(ps);
+        rs = session.execute( // this is where the query is executed
+                boundStatement.bind( // here you are binding the 'boundStatement'
+                        THINGS));
+
+        ArrayList<String[]> comList = new ArrayList<String[]>();
+        if (rs.isExhausted()) {
+            out.println("this has been failed");
+            request.setAttribute("found", "no");
+        } else {
+            request.setAttribute("found", "yes");
+            comList = readDataBase(rs);
+
+            request.setAttribute("ComList", comList);
+
+        }
+
+        String url = request.getRequestURL().toString();
+        String pic = url.substring(40);
+        request.setAttribute("pic", pic);
+
+        RequestDispatcher rd = request.getRequestDispatcher("/SinglePic.jsp");
+        rd.forward(request, response);
+    }
+
+    protected ArrayList<String[]> readDataBase(ResultSet rs) {
+
+        out.println(" DONE STATEMENTING THINGS ");
+
+        String comment = "";
+        String user = "";
+        Date time;
+
+        ArrayList<String[]> comList = new ArrayList<String[]>();
+
+        for (Row row : rs) {
+            String[] toAdd = new String[3];
+
+            comment = row.getString("comment");
+            user = row.getString("userleft");
+            time = row.getDate("timeleft");
+
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String x = df.format(time);
+
+            toAdd[0] = comment;
+            toAdd[1] = user;
+            toAdd[2] = x;
+
+            comList.add(toAdd);
+
+        }
+
+        return comList;
     }
 
     /**
@@ -85,23 +146,69 @@ private Cluster cluster;
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+
+        String comment = (String) request.getParameter("comment");
+
+        out.println("COMMENT | " + comment);
+        String userleft = (String) request.getParameter("user");
+        out.println("USERLEFT | " + userleft);
+        String picid = (String) request.getParameter("picid");
+        out.println("PICID | " + picid);
+        UUID pic = UUID.fromString(picid);
+        out.println("PID-UUID | " + pic);
+
+        if (comment != "") {
+            Session session = cluster.connect("instagrim");
+
+            out.println("STARTING TO DO THE THINGS ABOUT STUFF");
+
+            PreparedStatement ps = session.prepare("insert into comments (timeleft,picid,comment,userleft) values(?,?,?,?)");
+            BoundStatement bs = new BoundStatement(ps);
+
+            Date DateAdded = new Date();
+            out.println("DATE | " + DateAdded);
+
+            //UUID timeadded = UUID.fromString(DateAdded); 
+            out.println("ABOUT TO DO THE THINGS OF POSTING AND SUCH");
+            session.execute(bs.bind(DateAdded, pic, comment, userleft));
+
+            out.println("DONE THE THINGS OF POSTING AND SUCH");
+
+            session.close();
+        }
+        request.setAttribute("pic", picid);
+        out.println("PICID | " + picid);
+
         
-        String url = request.getRequestURL().toString();
-        String pic = url.substring(40);
         
-        //out.println("UUUUUUUUURRRRRRRRRRRRRLLLLLLLLLL     " + url);
         
-         //String other =request.getParameter("pic");
-         
-        //out.println("PIIIIIIIIIIIIIIIIIIIIIIC     "  + pic);
-        //out.println("PEEEEEEEEEEEEEEEEEEEEEEC     "  + other);
-         request.setAttribute("pic",pic);
-         
-         RequestDispatcher rd = request.getRequestDispatcher("/SinglePic.jsp");
-          
         
-             rd.forward(request, response);
+        //String picid = (String) request.getParameter("pic");
+        Session session = cluster.connect("instagrim");
+        UUID THINGS = UUID.fromString(picid);
+        PreparedStatement ps = session.prepare("select comment,userleft,timeleft FROM comments WHERE picid =? ALLOW FILTERING");
+        ResultSet rs = null;
+        BoundStatement boundStatement = new BoundStatement(ps);
+        rs = session.execute( // this is where the query is executed
+                boundStatement.bind( // here you are binding the 'boundStatement'
+                        THINGS));
+
+        ArrayList<String[]> comList = new ArrayList<String[]>();
+        if (rs.isExhausted()) {
+            out.println("this has been failed");
+            request.setAttribute("found", "no");
+        } else {
+            request.setAttribute("found", "yes");
+            comList = readDataBase(rs);
+
+            request.setAttribute("ComList", comList);
+
+        }
+   
+        RequestDispatcher rd = request.getRequestDispatcher("../SinglePic.jsp");
+        // RequestDispatcher rd = request.getRequestDispatcher("/");
+        rd.forward(request, response);
+
     }
 
     /**
