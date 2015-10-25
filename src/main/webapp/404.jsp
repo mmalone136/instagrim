@@ -12,31 +12,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body style=" background-repeat: no-repeat;
+    <body id = "page" style=" background-repeat: no-repeat;
    background-image: url('stuff/9551.jpg');
    background-attachment: fixed;
    background-size:100% auto;
    color:white;
    margin-top: 75px;">
         
-        <h1>Hello World! #404</h1>
-    <li> <a href="https://upload.wikimedia.org/wikipedia/en/7/7a/The_Safety_Dance_single.jpg">Go Here</a></li>
-    <li> <a href="index.jsp">Or Here</a></li>
+        <h1>404 - PAGE NOT FOUND</h1>
+        
+        
+    <li> <a href="/Instagrim">REDIRECT Here</a></li>
     
     <br><br><br><br>
        
-    <!--
-    
-    
-    <div>
-            <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="stuff/logo2.png" >
-                <img border="0" height="265px" width="205px" src="stuff/logo2.png" ></a>               
-        
-        </div>
-    
-    
-    -->
-    
+
     
     <%
             Pic ps = new Pic();

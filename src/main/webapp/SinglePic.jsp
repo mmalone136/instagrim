@@ -16,13 +16,11 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <nav> 
 
-            <!--<h1 style="text-align:center; width:100%; color:white">IG!</h1>-->
             <ul>
                 <li><a href="../index.jsp">
                         <img border="0" alt="LOGOTHINGS" src="../stuff/logo2.png" width="45" height="45">
                     </a></li> <br> 
                 <li><a href="../index.jsp">Home</a></li>
-                <li><a href="../test.jsp">Things</a></li>
                 <li><a href="../upload.jsp">Upload</a></li>
                 <form id="search" method="GET" action="../search" >
                     <input type="text" name="target" />
@@ -63,7 +61,6 @@
             ArrayList<String[]> comments = new ArrayList<String[]>();
             comments = (ArrayList<String[]>) request.getAttribute("ComList");
             int x =  comments.size();
-            System.out.println("WE MADE IT TO THE JSP PAGES THINGS AND STUFF===============" + x);
             String[] curr = new String[3];
             for (int i = 0; i < comments.size(); i++) {
                 curr = comments.get(i);
@@ -76,7 +73,6 @@
         <br>--------------------------------------<br>
         
         <%
-
                 }
             }
         %>

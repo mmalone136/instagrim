@@ -19,7 +19,6 @@
                     <img border="0" alt="LOGOTHINGS" src="/Instagrim/stuff/logo2.png" width="45" height="45">
                 </a></li> <br> 
             <li><a href="index.jsp">Home</a></li>
-            <li><a href="test.jsp">Things</a></li>
             <li><a href="upload.jsp">Upload</a></li>
             <form id="search" method="GET" action="search" >
                 <input type="text" name="target" />
@@ -49,9 +48,7 @@
 
                 username = temp[0];
                 String first = temp[1];
-                String last = temp[2];
-      //String first = (String) request.getAttribute("first_name");
-                //String last = (String) request.getAttribute("last_name");                
+                String last = temp[2];             
 
     %>  
     <br><br>

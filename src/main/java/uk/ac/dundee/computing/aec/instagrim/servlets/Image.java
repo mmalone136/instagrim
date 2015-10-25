@@ -78,16 +78,7 @@ public class Image extends HttpServlet {
             error("Bad Operator", response);
             return;          
         }
-        
-        out.println("  --------------  " + command);
-        
-        for(int seven= 0;seven< 3;seven++)
-      {
-        
-        out.println("  |||||||||||||||||||||||  " + args[seven]);
-        }
-        
-        
+               
         
         switch (command) {
             case 1:
@@ -105,8 +96,7 @@ public class Image extends HttpServlet {
     }
 
     private void DisplayImageList(String User, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //User ="adminstuff";
-        PicModel tm = new PicModel();
+       PicModel tm = new PicModel();
         tm.setCluster(cluster);
         java.util.LinkedList<Pic> lsPics = tm.getPicsForUser(User);
         
@@ -114,12 +104,7 @@ public class Image extends HttpServlet {
         String url = request.getRequestURL().toString();
         String curr = url.substring(39);
         request.setAttribute("curr", curr);
-        
-        
-        out.println("--------------------------------------------name" + curr);
-        
-        
-        
+      
         RequestDispatcher rd = request.getRequestDispatcher("/UsersPics.jsp");
         request.setAttribute("Pics", lsPics);
         rd.forward(request, response);
@@ -130,15 +115,13 @@ public class Image extends HttpServlet {
         PicModel tm = new PicModel();
         tm.setCluster(cluster);
   
-        System.out.println("HERE SHITEBAG BALLS");
         Pic p = tm.getPic(type,java.util.UUID.fromString(Image));
         
         OutputStream out = response.getOutputStream();
 
         response.setContentType(p.getType());
         response.setContentLength(p.getLength());
-        //out.write(Image);
-        
+       
         InputStream is = new ByteArrayInputStream(p.getBytes());
         BufferedInputStream input = new BufferedInputStream(is);
         byte[] buffer = new byte[8192];
@@ -149,11 +132,16 @@ public class Image extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path ="";
         for (Part part : request.getParts()) {
             System.out.println("Part Name " + part.getName());
 
             String type = part.getContentType();
             String filename = part.getSubmittedFileName();
+            
+            String check;
+            check = (String) request.getParameter("check");
+            
             
             InputStream is = request.getPart(part.getName()).getInputStream();
             int i = is.available();
@@ -161,19 +149,23 @@ public class Image extends HttpServlet {
             LoggedIn lg= (LoggedIn)session.getAttribute("LoggedIn");
             String username="majed";
             if (lg.getlogedin()){
+                
                 username=lg.getUsername();
             }
             if (i > 0) {
                 byte[] b = new byte[i + 1];
-                is.read(b);
+               is.read(b);
                 System.out.println("Length : " + b.length);
-                PicModel tm = new PicModel();
+               PicModel tm = new PicModel();
                 tm.setCluster(cluster);
-                tm.insertPic(b, type, filename, username);
+                tm.insertPic(b, type, filename, username, check);
 
                 is.close();
             }
-            RequestDispatcher rd = request.getRequestDispatcher("/upload.jsp");
+                path=("/upload.jsp");
+            
+           
+            RequestDispatcher rd = request.getRequestDispatcher(path);
              rd.forward(request, response);
         }
 

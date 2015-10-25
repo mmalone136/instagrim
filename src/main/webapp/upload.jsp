@@ -13,8 +13,6 @@
         <link rel="stylesheet" type="text/css" href="Styles.css" />
     </head>
     <body id="page" style="color:white">
-        <!--<h1>InstaGrim ! </h1> 
-        <h2>Your world in Black and White</h2> -->
         <nav>
             <ul>        <li><a href="index.jsp">
                 <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="45" height="45">
@@ -33,6 +31,7 @@
             <h3>File Upload</h3>
             <form method="POST" enctype="multipart/form-data" action="Image">
                 File to upload: <input type="file" name="upfile"><br/>
+                <input type ="hidden" name="check" value="0">
 
                 <br/>
                 <input type="submit" value="Press"> to upload the file!

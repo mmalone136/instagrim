@@ -55,16 +55,24 @@ public class Register extends HttpServlet {
         String first_name=request.getParameter("first_name");
         String last_name=request.getParameter("last_name");
         String email=request.getParameter("email");
-             
+
+        
+        if(username !="" && first_name !=""  && last_name !="" && !username.contains(" "))
+        {
         User us=new User();
         us.setCluster(cluster);
         
         Set<String> x = new HashSet<String>(Arrays.asList(email)); 
         
+        
+        
         us.RegisterUser(username, password, first_name, last_name, x);
         
 	response.sendRedirect("/Instagrim");
+        }else{
+            response.sendRedirect("register.jsp");
         
+        }
     }
 
     /**

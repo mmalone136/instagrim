@@ -12,9 +12,9 @@ import com.datastax.driver.core.Session;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
-import java.util.Date;
-import java.util.UUID;
-import javax.servlet.RequestDispatcher;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,11 +27,10 @@ import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
  *
  * @author Matt
  */
-@WebServlet(name = "Comment", urlPatterns = {"/comment/", "/comment/*"})
-//@WebServlet(name = "Comment")
-public class Comment extends HttpServlet {
+@WebServlet(name = "Update", urlPatterns = {"/update"})
+public class Update extends HttpServlet {
 
-    private Cluster cluster;
+    Cluster cluster = null;
 
     public void init(ServletConfig config) throws ServletException {
         // TODO Auto-generated method stub
@@ -49,11 +48,10 @@ public class Comment extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        
+
     }
 
-    /**
+     /**
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
@@ -80,38 +78,45 @@ public class Comment extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
 
-        String comment = (String) request.getParameter("comment");
+        String username =  request.getParameter("user");
+        String first_name = request.getParameter("first_name");
+        String last_name = request.getParameter("last_name");
+        String email = request.getParameter("email");
 
-        //out.println("COMMENT | " + comment);
-        String userleft = (String) request.getParameter("user");
-        //out.println("USERLEFT | " + userleft);
-        String picid = (String) request.getParameter("picid");
-        //out.println("PICID | " + picid);
-        UUID pic = UUID.fromString(picid);
-        //out.println("PID-UUID | " + pic);
-
-        if (comment != "") {
-            Session session = cluster.connect("instagrim");
+        //String toAdd = "";
+        //String Values;
 
         
-            PreparedStatement ps = session.prepare("insert into comments (timeleft,picid,comment,userleft) values(?,?,?,?)");
-            BoundStatement bs = new BoundStatement(ps);
+        if (first_name != "" && last_name != "" && email != "") {
+          
+        Set<String> x = new HashSet<String>(Arrays.asList(email));
 
-            Date DateAdded = new Date();
-         
-            try{
-            session.execute(bs.bind(DateAdded, pic, comment, userleft));
-            }catch(Exception e){}
-            
-            session.close();
+        //System.out.println(first_name + " | " + last_name + " | " + email);
+
+        Session session = cluster.connect("instagrim");
+        
+        
+        String statement = ("update userprofiles set first_name = '" + first_name + "', last_name = '" + last_name + "', email = ? WHERE login = ?");        
+        //out.println(statement);
+        PreparedStatement ps = session.prepare(statement);
+
+        BoundStatement boundStatement = new BoundStatement(ps);
+
+        
+        try{
+                session.execute( // this is where the query is executed
+                   boundStatement.bind( // here you are binding the 'boundStatement'
+        x,username));
+        //We are assuming this always works.  Also a transaction would be good here !
+        }catch(Exception e){}
+
+        response.sendRedirect("/Instagrim");
+        }else{
+        
+        out.println("FAILURES");
+        response.sendRedirect("/UpdateDetails.jsp");
         }
-        request.setAttribute("pic", picid);
-        out.println("PICID | " + picid);
-      
-        RequestDispatcher rd = request.getRequestDispatcher("picture");
-        rd.forward(request, response);
-
-       }
+    }
 
     /**
      * Returns a short description of the servlet.

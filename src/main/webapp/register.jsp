@@ -25,7 +25,6 @@
             </a></li> <br> 
             
             <li><a href="index.jsp">Home</a></li>
-             <li><a href="test.jsp">Things</a></li>
              <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
              <form id="search" method="GET" action="search" >
                 <input type="text" name="target" />
@@ -47,6 +46,7 @@
                     <li>First Name   <input style="margin-left:50px"type="text" name="first_name"></li><br><br>
                     <li>Surname      <input style="margin-left:65px"type="text" name="last_name"></li><br><br>
                     <li>Email        <input style="margin-left:82px"type="email" name="email"></li><br><br>
+                                   
                 </ul>
                 <br/>
                 <input type="submit" value="Register"> 

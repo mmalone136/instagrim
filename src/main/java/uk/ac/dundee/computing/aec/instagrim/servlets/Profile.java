@@ -17,6 +17,7 @@ import java.io.IOException;
 import static java.lang.System.out;
 import java.util.Arrays;
 import java.util.Set;
+import java.util.UUID;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -24,7 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
 import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
-
 
 /**
  *
@@ -46,12 +46,8 @@ public class Profile extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        out.println("=nearly get things");
-
-        String url = request.getRequestURL().toString();
-        out.println("url things | " + url);
-
+ String url = request.getRequestURL().toString();
+        
         String Username;
         //= request.getParameter("username");
 
@@ -59,24 +55,29 @@ public class Profile extends HttpServlet {
         Set<String> email = null;
         String first_name = "";
         String last_name = "";
+        UUID profpic = null;
 
-        out.println("getting things | " + Username);
-
+       
         Session session = cluster.connect("instagrim");
-        PreparedStatement ps = session.prepare("select first_name,last_name,email FROM userprofiles WHERE login =?");
-        ResultSet rs = null;
+        
+        PreparedStatement ps = session.prepare("select first_name,last_name,email,profpic FROM userprofiles WHERE login =?");
+      ResultSet rs = null;
+    
         BoundStatement boundStatement = new BoundStatement(ps);
-        rs = session.execute( // this is where the query is executed
+       rs = session.execute( // this is where the query is executed
                 boundStatement.bind( // here you are binding the 'boundStatement'
                         Username));
-
-        if (rs.isExhausted()) {
+       if (rs.isExhausted()) {
             out.println("this has been failed");
+
         } else {
             for (Row row : rs) {
+
                 first_name = row.getString("first_name");
                 last_name = row.getString("last_name");
                 email = row.getSet("email", String.class);
+                
+                profpic = row.getUUID("profpic");
             }
 
             String[] newEmail = email.toArray(new String[email.size()]);
@@ -85,10 +86,20 @@ public class Profile extends HttpServlet {
             int len = (x.length() - 1);
             x = x.substring(1, len);
 
+            String profilepic;
+            
+            if(profpic!=null)
+            {
+                profilepic = profpic.toString();
+            }else{
+                profilepic = null;
+            }
+            
+            
             request.setAttribute("first_name", first_name);
             request.setAttribute("last_name", last_name);
             request.setAttribute("email", x);
-
+            request.setAttribute("profpic", profilepic);
         }
         request.setAttribute("username", Username);
         RequestDispatcher rd = request.getRequestDispatcher("/UserProfile.jsp");
@@ -97,7 +108,7 @@ public class Profile extends HttpServlet {
     }
 
     private String getUserFromUrl(String url) {
-        String user = "";
+        String user;
         user = url.substring(40);
         return user;
     }

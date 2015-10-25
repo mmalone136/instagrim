@@ -10,63 +10,76 @@
 <!DOCTYPE html>
 <html style="height:100%">
     <head>
-      <link rel="stylesheet" type="text/css" href="../Styles.css"  />
+        <link rel="stylesheet" type="text/css" href="../Styles.css"  />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-           <nav> 
-        
-        <!--<h1 style="text-align:center; width:100%; color:white">IG!</h1>-->
-    <ul>
-        <li><a href="../index.jsp">
-                <img border="0" alt="LOGOTHINGS" src="../stuff/logo2.png" width="45" height="45">
-            </a></li> <br> 
+    <nav> 
+
+        <ul>
+            <li><a href="../index.jsp">
+                    <img border="0" alt="LOGOTHINGS" src="../stuff/logo2.png" width="45" height="45">
+                </a></li> <br> 
             <li><a href="../index.jsp">Home</a></li>
-             <li><a href="../test.jsp">Things</a></li>
-             <li><a href="../upload.jsp">Upload</a></li>
-                <form id="search" method="GET" action="../search" >
+            <li><a href="../upload.jsp">Upload</a></li>
+            <form id="search" method="GET" action="../search" >
                 <input type="text" name="target" />
                 <input type='submit' />
             </form>
-             
-            </ul>
-        </nav>
-    </head>
-    <body id="page">
-      
-        <!--<img style="float:right; margin-right: 200px" border="0" alt="LOGOTHINGS" src="../stuff/logo2.png">-->
-  
-        <p>This is the profile</p>
-        
-                 <article>
-            <%
-                
-                     //LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
-                     //if (lg != null) {
-                     //String UserName = lg.getUsername();
-                     //if (lg.getlogedin()) {
-                    
-            %>
-            <h1><%//=UserName%> Profile</h1>
-              <%//}}%>   </article>
-              Put the datas of things here
-    
-              <% 
-                String first = (String) request.getAttribute("first_name");
-                String last = (String) request.getAttribute("last_name");
-                String email = (String) request.getAttribute("email");
-                String Username = (String) request.getAttribute("username");
-              %>
-              <br><br>
-              <%=Username%>
-              <br><br>
-              <%=first%> 
-              <br><br>
-              <%=last%>
-              <br><br>
-              <%=email%>
-              
-              <br><br>
 
-                <li><a href="/Instagrim/Images/<%=Username%>">User's Images</a></li>
-              
-    </body>
+        </ul>
+    </nav>
+</head>
+<body id="page" style="margin-left:10px">
+    <div >
+        <h1> Profile</h1>
+
+
+        <%
+            String first = (String) request.getAttribute("first_name");
+            String last = (String) request.getAttribute("last_name");
+            String email = (String) request.getAttribute("email");
+            String Username = (String) request.getAttribute("username");
+        %>
+
+        <br>
+        Username    : <%=Username%>
+        <br><br>
+        First Name  : <%=first%> 
+        <br><br>
+        Last Name   : <%=last%>
+        <br><br>
+        Email       : <%=email%>
+
+        <br><br><br><br> 
+
+        <li><a style="color:white;font-size: 20px" href="/Instagrim/Images/<%=Username%>">User's Images</a></li>
+
+        <%
+
+            LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
+            if (lg != null) {
+                String currUser = lg.getUsername();
+                if (currUser.equals(Username)) {
+        %>
+        <br><br>
+        <li><a style="color: white; font-size: 20px" href="/Instagrim/UpdateDetails.jsp">Update Details</a></li>    
+            <%} else {
+                    }
+                }%>
+
+    </div>
+    <%
+        String str = (String) request.getAttribute("profpic");
+        if (str != null) {
+            UUID pic = UUID.fromString(str);
+
+    %>
+
+    <img style="float:right; margin-right:75px; margin-left:75px; margin-top:60px" border="0" height="300px" src="/Instagrim/Image/<%=pic%>" >
+    <%
+    } else {
+    %>
+    <img style="float:right; margin-right:75px; margin-left:75px; margin-top:60px" border="0" height="300px" src="../stuff/defaultPic.png" >
+
+    <%}%>
+</body>
 </html>

@@ -49,7 +49,7 @@ public final class Keyspaces {
                     + "      email set<text>,\n"
                     + "      addresses  map<text, frozen <address>>\n"
                     + "  );";
-            
+                   
             
             String CreateComments = "CREATE TABLE if not exists instagrim.comments (\n"
                     + "      picid uuid,\n"

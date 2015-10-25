@@ -5,18 +5,18 @@
 	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	 version="3.1">
     
-    <!--<session-config>
+    <session-config>
         <session-timeout>
             120
         </session-timeout>
-    </session-config>-->
+    </session-config>
 
     <error-page>
         <error-code>
             404
         </error-code>
         <location>
-            /test.jsp
+            /404.jsp
         </location>
     </error-page>
     

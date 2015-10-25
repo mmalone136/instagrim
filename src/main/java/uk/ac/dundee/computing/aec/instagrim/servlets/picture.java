@@ -60,7 +60,6 @@ public class picture extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -77,7 +76,7 @@ public class picture extends HttpServlet {
         String picid = (String) request.getParameter("pic");
         Session session = cluster.connect("instagrim");
         UUID THINGS = UUID.fromString(picid);
-        PreparedStatement ps = session.prepare("select comment,userleft,timeleft FROM comments WHERE picid =? ALLOW FILTERING");
+        PreparedStatement ps = session.prepare("select comment,userleft,timeleft FROM comments WHERE picid =? ALLOW FILTERING ");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
         rs = session.execute( // this is where the query is executed
@@ -106,7 +105,6 @@ public class picture extends HttpServlet {
 
     protected ArrayList<String[]> readDataBase(ResultSet rs) {
 
-        out.println(" DONE STATEMENTING THINGS ");
 
         String comment = "";
         String user = "";
@@ -185,13 +183,13 @@ public class picture extends HttpServlet {
         
         //String picid = (String) request.getParameter("pic");
         Session session = cluster.connect("instagrim");
-        UUID THINGS = UUID.fromString(picid);
+        UUID picuuid = UUID.fromString(picid);
         PreparedStatement ps = session.prepare("select comment,userleft,timeleft FROM comments WHERE picid =? ALLOW FILTERING");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
         rs = session.execute( // this is where the query is executed
                 boundStatement.bind( // here you are binding the 'boundStatement'
-                        THINGS));
+                        picuuid));
 
         ArrayList<String[]> comList = new ArrayList<String[]>();
         if (rs.isExhausted()) {
@@ -206,7 +204,6 @@ public class picture extends HttpServlet {
         }
    
         RequestDispatcher rd = request.getRequestDispatcher("../SinglePic.jsp");
-        // RequestDispatcher rd = request.getRequestDispatcher("/");
         rd.forward(request, response);
 
     }

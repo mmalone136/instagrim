@@ -32,59 +32,45 @@
 
         <article>
             <%
-                
+
                 String curr = (String) request.getAttribute("curr");
-                
+
                 String url = request.getRequestURL().toString();
-                
-                
+
                 LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
                 if (lg != null) {
                     String UserName = lg.getUsername();
                       //if (lg.getlogedin()) {
-                 
+
             %>
             <h1><%=curr%>              's Pictures</h1>
-                       
-                <%
-                    }
-                    java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
-                    if (lsPics == null) {
-                %>
-                <p>No Pictures found</p>
-                <%
-                } else {
-                    Iterator<Pic> iterator;
-                    iterator = lsPics.iterator();
-                    while (iterator.hasNext()) {
-                        Pic p = (Pic) iterator.next();
-                        
-                %>
 
-                <form method="GET" action="../picture/<%=p.getSUUID()%>" >
-                    <input type="hidden" value="<%=p.getSUUID()%>" name="pic">
-                    
-                    <input id="seven" type='image' name="submit" src="/Instagrim/Thumb/<%=p.getSUUID()%>" border="0" height="275px" width="225px"/>
-<!--
-                    <a style="margin-top: 40px; margin-left: 70px; padding-right:50px; float:left" href="/Instagrim/Image/<%//=p.getSUUID()%>" >
-                        <img border="0" height="275px" width="225px" src="/Instagrim/Thumb/<%//=p.getSUUID()%>" ></a>  
--->
-                </form>
-<!--
-                <form id='formName' name='formName'>
-                    <div class="style7">
-                        <input type='text' id='userInput' name='userInput' value=''>
-                        <input type="image" name="submit" src="/Button1.jpg" border="0" alt="Submit" />
-                    </div>
-                </form>        
-         -->       
-                
-                
-                
-                <%}
-                }%>
+            <%
+                }
+                java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
+                if (lsPics == null) {
+            %>
+            <p>No Pictures found</p>
+            <%
+            } else {
+                Iterator<Pic> iterator;
+                iterator = lsPics.iterator();
+                while (iterator.hasNext()) {
+                    Pic p = (Pic) iterator.next();
 
-            
+            %>
+
+            <form method="GET" action="../picture/<%=p.getSUUID()%>" >
+                <input type="hidden" value="<%=p.getSUUID()%>" name="pic">
+
+                <input id="seven" type='image' name="submit" src="/Instagrim/Thumb/<%=p.getSUUID()%>" border="0" height="275px" width="245px"/>
+
+            </form>
+
+            <%}
+                    }%>
+
+
 
         </div> 
 

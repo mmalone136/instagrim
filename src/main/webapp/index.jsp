@@ -14,13 +14,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <nav> 
 
-        <!--<h1 style="text-align:center; width:100%; color:white">IG!</h1>-->
         <ul>
             <li><a href="index.jsp">
                     <img border="0" alt="LOGOTHINGS" src="stuff/logo2.png" width="45" height="45">
                 </a></li> <br> 
             <li><a href="index.jsp">Home</a></li>
-            <li><a href="test.jsp">Things</a></li>
             <li><a href="upload.jsp">Upload</a></li>
 
             <form id="search" method="GET" action="search" >
@@ -37,7 +35,6 @@
     <p >
         <br><br>  <br><br>       
         <a href="../java/uk/ac/dundee/computing/aec/instagrim/stores/LoggedIn.java"></a>
-        <!--<li><a href="upload.jsp">Upload</a></li>-->
         <%
 
             LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
@@ -55,7 +52,6 @@
 </form>
 
 <%}
-
 } else {
 %>
 
@@ -66,7 +62,6 @@
 
 <%
     }
-
 %>
 </p>
 </body>   

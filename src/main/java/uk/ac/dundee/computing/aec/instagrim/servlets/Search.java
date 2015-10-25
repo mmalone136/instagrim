@@ -44,17 +44,12 @@ public class Search extends HttpServlet {
 
         String target;
         target = (String) request.getParameter("target");
-        out.println("-------------" + target);
+        //out.println("-------------" + target);
 
         ArrayList<String[]> list = new ArrayList<String[]>();
-
-        //target = "adminstuff";
-        //Set<String> email = null; 
-        String first_name = "";
+         String first_name = "";
         String last_name = "";
-        out.println(target);
-        out.println("----------------Started to get things--------------");
-
+        
         if (target != "") {
 
             Session session = cluster.connect("instagrim");
@@ -71,7 +66,7 @@ public class Search extends HttpServlet {
                 for (Row row : rs) {
 
                     String check = row.getString("login");
-                    out.println("CHECK | " + check);
+                    //out.println("CHECK | " + check);
 
                     if (check.contains(target)) {
                         String[] dataToPass = new String[3];
@@ -81,10 +76,10 @@ public class Search extends HttpServlet {
 
                         dataToPass[0] = check;
                         //out.println("0"); 
-                        out.println(dataToPass[0]);
+                        //out.println(dataToPass[0]);
                         dataToPass[1] = row.getString("first_name");
                         dataToPass[2] = row.getString("last_name");
-                        out.println(dataToPass[0] + " | " + dataToPass[1] + " | " + dataToPass[2]);
+                        //out.println(dataToPass[0] + " | " + dataToPass[1] + " | " + dataToPass[2]);
                         list.add(dataToPass);
                         String[] str = dataToPass;
                     }
@@ -92,18 +87,10 @@ public class Search extends HttpServlet {
 
                 request.setAttribute("found", "YES");
                 request.setAttribute("list", list);
-                //request.setAttribute("first_name", first_name);//request.setAttribute("last_name", last_name);//request.setAttribute("email",x);
-
-                /*
-                 for (int i = 0; i < list.size(); i++) {
-                 String[] str = list.get(i);
-                 for (int j = 0; j < 3; j++) {
-                 out.println("More things::::::: " + str[j]);
-                 }
-                 }*/
+                
             }
         } else {
-            out.println("-----EMPTAH THINGS-------");
+            out.println("-----EMPTY THINGS-------");
             request.setAttribute("found", "NO");
         }
 

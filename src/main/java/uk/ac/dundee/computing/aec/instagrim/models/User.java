@@ -12,21 +12,24 @@ import com.datastax.driver.core.PreparedStatement;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import static java.lang.System.out;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import uk.ac.dundee.computing.aec.instagrim.lib.AeSimpleSHA1;
 import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
 
 import java.util.Set;
+import java.util.UUID;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpSession;
+import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
 
 /**
  *
  * @author Administrator
  */
-
-//@WebServlet(urlPatterns = {"/profile","profile/*"})
 
 public class User {
     Cluster cluster;
@@ -44,18 +47,37 @@ public class User {
             System.out.println("Can't check your password");
             return false;
         }
+        UUID profpic=null;
+        
+        
         Session session = cluster.connect("instagrim");
+        
+        
+
+
         //PreparedStatement ps = session.prepare("insert into userprofiles (login,password) Values(?,?)");
        
-        PreparedStatement ps = session.prepare("insert into userprofiles (login,password,first_name,last_name,email) Values(?,?,?,?,?)");
+        PreparedStatement ps = session.prepare("insert into userprofiles (login,password,first_name,last_name,emailprofpic) Values(?,?,?,?,?) IF NOT EXISTS");
         
         BoundStatement boundStatement = new BoundStatement(ps);
+        
+        try{
         session.execute( // this is where the query is executed
                 boundStatement.bind( // here you are binding the 'boundStatement'
-                        username,EncodedPassword,first_name,last_name,email));
-        //We are assuming this always works.  Also a transaction would be good here !
+                        username,EncodedPassword,first_name,last_name,email,profpic));
+        }
+        catch(Exception e)
+        {
+            out.println("error during query execution");
+        }
+        
         
         return true;
+    }
+    
+    
+    public void setProfPicDefault(){
+
     }
     
     public boolean IsValidUser(String username, String Password){
