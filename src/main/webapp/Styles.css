@@ -87,25 +87,13 @@ li {
 div
 {
     
-    //background-color: red;
-    //width: 250px;
-    //position: relative;
-    //display: inline-block;    
+  
     position:relative;
     float: left; 
     display: inline-block; 
-    //width: 350px;  
+      
     left: 50px; 
-    //height: 400px ;
-    //margin-bottom: 50px; 
-    //margin-left: 20px
-    //padding:200px;    
-    //padding-left:50px;
-    
-    
-    //margin-top: 40px; 
-    //margin-left: 70px;
-    //float:left;
+
     
 }
 
@@ -159,8 +147,8 @@ a{
     text-decoration: none;
     vertical-align: middle;
 
-margin-top: 40px; margin-left: 70px; padding-right:50px; float:left;
-
+margin-top: 30px; margin-left: 70px; padding-right:50px; float:left;
+margin-bottom:40px;
 }
 
 

@@ -47,7 +47,7 @@ public class User {
             System.out.println("Can't check your password");
             return false;
         }
-        UUID profpic=null;
+        //UUID profpic=null;
         
         
         Session session = cluster.connect("instagrim");
@@ -57,14 +57,14 @@ public class User {
 
         //PreparedStatement ps = session.prepare("insert into userprofiles (login,password) Values(?,?)");
        
-        PreparedStatement ps = session.prepare("insert into userprofiles (login,password,first_name,last_name,emailprofpic) Values(?,?,?,?,?) IF NOT EXISTS");
+        PreparedStatement ps = session.prepare("insert into userprofiles (login,password,first_name,last_name,email) Values(?,?,?,?,?) IF NOT EXISTS");
         
         BoundStatement boundStatement = new BoundStatement(ps);
         
         try{
         session.execute( // this is where the query is executed
                 boundStatement.bind( // here you are binding the 'boundStatement'
-                        username,EncodedPassword,first_name,last_name,email,profpic));
+                        username,EncodedPassword,first_name,last_name,email));
         }
         catch(Exception e)
         {
