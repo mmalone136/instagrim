@@ -66,9 +66,11 @@ public class Search extends HttpServlet {
                 for (Row row : rs) {
 
                     String check = row.getString("login");
+                    String temp= check.toLowerCase();
+                    target= target.toLowerCase();
                     //out.println("CHECK | " + check);
 
-                    if (check.contains(target)) {
+                    if (temp.contains(target)) {
                         String[] dataToPass = new String[3];
                         for (int i = 0; i < 3; i++) {
                             dataToPass[i] = "";
